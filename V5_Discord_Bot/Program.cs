@@ -6,7 +6,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using V5_Discord_Bot.Services;
-using V5_Discord_Bot.Util;
 
 namespace V5_Discord_Bot
 {
@@ -23,7 +22,7 @@ namespace V5_Discord_Bot
             client.Log += Log;
             services.GetRequiredService<CommandService>().Log += Log;
 
-            var token = Environment.GetEnvironmentVariable("DiscordToken");
+            var token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.Machine);
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
 

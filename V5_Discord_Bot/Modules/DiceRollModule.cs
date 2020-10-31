@@ -1,10 +1,9 @@
 ﻿using Discord;
 using Discord.Commands;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using V5_Discord_Bot.Services;
-using V5_Discord_Bot.Util;
 
 namespace V5_Discord_Bot.Modules
 {
@@ -37,20 +36,26 @@ namespace V5_Discord_Bot.Modules
 
             var result = _diceRollerService.Roll(Context.User.Id, amount);
 
+            Embed embed = CreateRollResultEmbed(result);
+            return ReplyAsync(embed: embed);
+        }
+
+        private Embed CreateRollResultEmbed(Model.RollResult result)
+        {
             var fields = new List<EmbedFieldBuilder>();
 
             var emotes = _guildEmoteService.GetEmotesForGuild(Context.Guild.Id);
             if (result.NormalDice.Count > 0)
                 fields.Add(
                 new EmbedFieldBuilder()
-                    .WithName("Normal Die")
+                    .WithName("Normal Dice")
                     .WithValue(string.Join(" ", _emojiConverter.ConvertNormalDice(result.NormalDice, emotes)))
             );
 
             if (result.HungerDice.Count > 0)
                 fields.Add(
                 new EmbedFieldBuilder()
-                    .WithName("Hunger Die")
+                    .WithName("Hunger Dice")
                     .WithValue(string.Join(" ", _emojiConverter.ConvertHungerDice(result.HungerDice, emotes)))
                 );
 
@@ -60,7 +65,31 @@ namespace V5_Discord_Bot.Modules
                 .WithDescription($"<@!{Context.User.Id}>")
                 .WithFields(fields)
                 .Build();
-            return ReplyAsync(embed: embed);
+            return embed;
+        }
+
+        [Command("reroll")]
+        public Task Reroll(params int[] indices)
+        {
+            if (indices.Length > 3)
+                return ReplyAsync("You can at most reroll three dice.");
+            else if (indices.Length == 0)
+                return ReplyAsync("You need to tell me which normal dice you want to reroll. You can choose up to three by appending the indics of the dice you want to reroll to the reroll command. For example like this `!reroll 1 2 3 ` to reroll the first three normal dice. ");
+
+
+            try
+            {
+                var result = _diceRollerService.Reroll(Context.User.Id, indices);
+                if (result == null)
+                    return ReplyAsync("There are no more rolls left that you can reroll.");
+
+                var embed = CreateRollResultEmbed(result);
+                return ReplyAsync(embed: embed);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return ReplyAsync(ex.Message);
+            }
         }
 
         [Command("sethunger")]

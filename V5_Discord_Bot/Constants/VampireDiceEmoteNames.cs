@@ -12,6 +12,6 @@ namespace V5_Discord_Bot.Constants
         public const string RedFail = "redfail";
         public const string BestialFail = "bestialfail";
 
-        public static ICollection<string> EmoteNames = new List<string> { NormalSuccess, NormalCrit, NormalFail, RedSuccess, RedCrit, RedFail, BestialFail };
+        public static List<string> EmoteNames = new List<string> { NormalSuccess, NormalCrit, NormalFail, RedSuccess, RedCrit, RedFail, BestialFail };
     }
 }

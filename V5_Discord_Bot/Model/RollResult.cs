@@ -5,16 +5,16 @@ namespace V5_Discord_Bot.Model
 {
     public class RollResult
     {
-        private ICollection<int>? _normalDice;
-        private ICollection<int>? _hungerDice;
+        private List<int>? _normalDice;
+        private List<int>? _hungerDice;
 
-        public ICollection<int> NormalDice
+        public List<int> NormalDice
         {
             get => _normalDice ?? throw new InvalidOperationException("Uninitialized property: " + nameof(NormalDice));
             set => _normalDice = value;
         }
 
-        public ICollection<int> HungerDice
+        public List<int> HungerDice
         {
             get => _hungerDice ?? throw new InvalidOperationException("Uninitialized property: " + nameof(HungerDice));
             set => _hungerDice = value;
