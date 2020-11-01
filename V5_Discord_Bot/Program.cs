@@ -16,6 +16,7 @@ express or implied.
 * See the Licence for the specific language governing
 permissions and limitations under the Licence.
 */
+
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -23,13 +24,13 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using V5_Discord_Bot.Exceptions;
 using V5_Discord_Bot.Services;
 
 namespace V5_Discord_Bot
 {
-    class Program
+    internal class Program
     {
-
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
         private async Task MainAsync()
@@ -41,6 +42,10 @@ namespace V5_Discord_Bot
             services.GetRequiredService<CommandService>().Log += Log;
 
             var token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.Machine);
+            if (token == null)
+            {
+                throw new BotTokenException("The DiscordToken environment variable is missing or empty. The bot can not function without this token.");
+            }
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
 
