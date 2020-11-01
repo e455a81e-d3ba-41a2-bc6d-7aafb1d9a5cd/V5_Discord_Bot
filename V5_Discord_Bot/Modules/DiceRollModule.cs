@@ -103,7 +103,7 @@ namespace V5_Discord_Bot.Modules
             var embed = new EmbedBuilder()
                 .WithColor(Color.DarkRed)
                 .WithTitle($"Hunger")
-                .WithDescription($"<@!{Context.User.Id}> hunger is now **{hunger}**.")
+                .WithDescription($"<@!{Context.User.Id}> Your hunger is now **{hunger}**.")
                 .Build();
             return ReplyAsync(embed: embed);
         }
@@ -119,7 +119,7 @@ namespace V5_Discord_Bot.Modules
             if (!hungerFrenzy)
             {
                 var embed = embedBuilder
-                    .WithDescription($"<@!{Context.User.Id}> hunger is now **{hunger}**.")
+                    .WithDescription($"<@!{Context.User.Id}> Your hunger is now **{hunger}**.")
                     .Build();
                 return ReplyAsync(embed: embed);
             }
@@ -143,21 +143,21 @@ namespace V5_Discord_Bot.Modules
             if (success)
             {
                 var embed = embedBuilder
-                    .WithDescription($"**Success** <@!{Context.User.Id}> hunger does not increase.")
+                    .WithDescription($"**Success** <@!{Context.User.Id}> Your hunger does not increase.")
                     .Build();
                 return ReplyAsync(embed: embed);
             }
             else if (!hungerFrenzy)
             {
                 var embed = embedBuilder
-                    .WithDescription($"**Failure** <@!{Context.User.Id}> hunger is now **{hunger}**.")
+                    .WithDescription($"**Failure** <@!{Context.User.Id}> Your hunger is now **{hunger}**.")
                     .Build();
                 return ReplyAsync(embed: embed);
             }
             else
             {
                 var embed = embedBuilder
-                    .WithDescription($"**Failure** <@!{Context.User.Id}> falls under the control of the beast and is now frenzying.")
+                    .WithDescription($"**Failure** <@!{Context.User.Id}> Your character falls under the control of the beast and is now frenzying.")
                     .Build();
                 return ReplyAsync(embed: embed);
             }

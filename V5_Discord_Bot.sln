@@ -5,6 +5,24 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V5_Discord_Bot", "V5_Discord_Bot\V5_Discord_Bot.csproj", "{8A6057A8-F31C-42D7-AAE9-6AAB72821042}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!SolutionItems", "!SolutionItems", "{E84FB54E-BFF1-41F9-9BC9-BF31E03A3396}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Emojis", "Emojis", "{766177FD-A7D1-4B6D-A413-291D89D880C9}"
+	ProjectSection(SolutionItems) = preProject
+		Emojis\bestial-fail.png = Emojis\bestial-fail.png
+		Emojis\normal-crit.png = Emojis\normal-crit.png
+		Emojis\normal-fail.png = Emojis\normal-fail.png
+		Emojis\normal-success.png = Emojis\normal-success.png
+		Emojis\red-crit.png = Emojis\red-crit.png
+		Emojis\red-fail.png = Emojis\red-fail.png
+		Emojis\red-success.png = Emojis\red-success.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +36,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{766177FD-A7D1-4B6D-A413-291D89D880C9} = {E84FB54E-BFF1-41F9-9BC9-BF31E03A3396}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {044AED99-A7A1-41A7-A5AA-648827BE1ED6}
