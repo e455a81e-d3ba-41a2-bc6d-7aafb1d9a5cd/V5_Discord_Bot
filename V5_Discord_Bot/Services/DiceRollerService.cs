@@ -43,7 +43,9 @@ namespace V5_Discord_Bot.Services
             {
                 hunger = amount;
             }
-            var normal = (amount - hunger);
+            var normal = amount - hunger;
+            if (normal < 0) { normal = 0; }
+
             var result = new RollResult
             {
                 HungerDice = RollDice(hunger),
