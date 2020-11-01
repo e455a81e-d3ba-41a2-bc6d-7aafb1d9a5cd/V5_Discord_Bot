@@ -16,6 +16,7 @@ express or implied.
 * See the Licence for the specific language governing
 permissions and limitations under the Licence.
 */
+
 using Discord;
 using Discord.Commands;
 using System;
@@ -94,7 +95,6 @@ namespace V5_Discord_Bot.Modules
             else if (indices.Length == 0)
                 return ReplyAsync("You need to tell me which normal dice you want to reroll. You can choose up to three by appending the indics of the dice you want to reroll to the reroll command. For example like this `!reroll 1 2 3 ` to reroll the first three normal dice. ");
 
-
             try
             {
                 var result = _diceRollerService.Reroll(Context.User.Id, indices);
@@ -107,46 +107,6 @@ namespace V5_Discord_Bot.Modules
             catch (InvalidOperationException ex)
             {
                 return ReplyAsync(ex.Message);
-            }
-        }
-
-        [Command("sethunger")]
-        public Task SetHunger(int hunger)
-        {
-            if (hunger < 0 || hunger > 5)
-                return ReplyAsync("Hunger must be between 0 and 5");
-
-            _hungerService.SetHunger(Context.User.Id, hunger);
-
-            var embed = new EmbedBuilder()
-                .WithColor(Color.DarkRed)
-                .WithTitle($"Hunger")
-                .WithDescription($"<@!{Context.User.Id}> Your hunger is now **{hunger}**.")
-                .Build();
-            return ReplyAsync(embed: embed);
-        }
-
-        [Command("gainhunger")]
-        public Task GainHunger()
-        {
-            var (hunger, hungerFrenzy) = _hungerService.IncrementHunger(Context.User.Id);
-            var embedBuilder = new EmbedBuilder()
-                .WithColor(Color.DarkRed)
-                .WithTitle($"Gained Hunger");
-
-            if (!hungerFrenzy)
-            {
-                var embed = embedBuilder
-                    .WithDescription($"<@!{Context.User.Id}> Your hunger is now **{hunger}**.")
-                    .Build();
-                return ReplyAsync(embed: embed);
-            }
-            else
-            {
-                var embed = embedBuilder
-                    .WithDescription($"<@!{Context.User.Id}> falls under the control of the beast and is now frenzying.")
-                    .Build();
-                return ReplyAsync(embed: embed);
             }
         }
 
