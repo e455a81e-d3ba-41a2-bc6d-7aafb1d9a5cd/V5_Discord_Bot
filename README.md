@@ -33,7 +33,7 @@ You will need to build the bot yourself.
 4. On the left-hand side, click Bot.
 5. Click on `Add Bot` and confirm the popup.
 6. On the left-hand side, click OAuth2.
-7. Scroll down to `OAuth2 URL Generator` and under `Scops` tick bot.
+7. Scroll down to `OAuth2 URL Generator` and under `Scopes` tick `bot`.
 8. Scroll down to `Bot Permissions` and select the `Send Messages` Permission.
 9. Open the generated URL from the `OAuth2 URL Generator` and select a server.
 10. Go back to the Discord Applications Portal.
