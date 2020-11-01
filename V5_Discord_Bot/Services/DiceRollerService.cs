@@ -39,10 +39,15 @@ namespace V5_Discord_Bot.Services
         public RollResult Roll(ulong userId, int amount)
         {
             var hunger = _hungerService.GetHunger(userId);
+            if (hunger >= amount)
+            {
+                hunger = amount;
+            }
+            var normal = (amount - hunger);
             var result = new RollResult
             {
                 HungerDice = RollDice(hunger),
-                NormalDice = RollDice(amount - hunger),
+                NormalDice = RollDice(normal),
             };
             SetPreviousRoll(userId, result);
             return result;
