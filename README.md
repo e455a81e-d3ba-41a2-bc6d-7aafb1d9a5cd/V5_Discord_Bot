@@ -39,7 +39,7 @@ All rights reserved. For more information please visit [worldofdarkness.com](htt
 `!reroll 1 4 5` Re-roll the first, the fourth and the fifth die in the previous dice roll.
 
 ## How do I use this bot?
-I am currently not hosting the bot for public consumption so you will need to do that on you own computer or server.
+I am currently not hosting the bot for public consumption so you will need to do that on your own.
 You can host your own bot by following these steps:
 1. Visit the [Discord Applications Portal](https://discordapp.com/developers/applications/).
 2. Create a new application.
