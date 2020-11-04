@@ -54,9 +54,9 @@ You can host your own bot by following these steps:
 11. Go to the Bot in the left-hand side pane.
 12. Click the copy button in the Token section. <img src="https://github.com/LariscusObscurus/V5_Discord_Bot/raw/master/Images/Token.png">
 13. Add an environment variable named `DiscordToken` containing the Token on the system where you wish to host the bot.
-14. Install the dotnet core runtime.
-15. Download the newest release.
-16. Extract the files and run the 'V5_Discord_Bot.exe'
+14. Install the [dotnet core runtime](https://dotnet.microsoft.com/download).
+15. Download the newest release of this Bot.
+16. Extract the files and run the 'V5_Discord_Bot.exe'.
 17. The bot should now appear as online on your server.
 18. (optional) For pretty dice roll results that are not just numbers, add the emotes from the ![emoji directory](https://github.com/LariscusObscurus/V5_Discord_Bot/tree/master/Emojis). The names should match up automatically. You can check if all emotes where found by running the bot command `!verifyemotes`. 
     The bot caches the emote names so you need to run this command again if you change the dice emotes.
