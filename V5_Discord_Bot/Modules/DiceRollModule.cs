@@ -113,10 +113,18 @@ namespace V5_Discord_Bot.Modules
         [Command("rouse")]
         public Task Rouse()
         {
-            var (success, hunger, hungerFrenzy) = _diceRollerService.Rouse(Context.User.Id);
+            var (success, hunger, hungerFrenzy, result) = _diceRollerService.Rouse(Context.User.Id);
+
+            var emotes = _guildEmoteService.GetEmotesForGuild(Context.Guild.Id);
+            var field = new EmbedFieldBuilder()
+                .WithName("Result")
+                .WithValue(string.Join(" ", _emojiConverter.ConvertHungerDice(new List<int> { result }, emotes)));
+
             var embedBuilder = new EmbedBuilder()
                 .WithColor(Color.DarkRed)
-                .WithTitle($"Rouse");
+                .WithTitle($"Rouse")
+                .WithFields(field);
+
 
             if (success)
             {

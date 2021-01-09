@@ -55,14 +55,14 @@ namespace V5_Discord_Bot.Services
             return result;
         }
 
-        public (bool gainedHunger, int? currentHunger, bool hungerFrenzy) Rouse(ulong userId)
+        public (bool gainedHunger, int? currentHunger, bool hungerFrenzy, int result) Rouse(ulong userId)
         {
             var result = RollDie();
             if (result >= 6)
-                return (true, null, false);
+                return (true, null, false, result);
 
             var (hunger, hungerFrenzy) = _hungerService.IncrementHunger(userId);
-            return (false, hunger, hungerFrenzy);
+            return (false, hunger, hungerFrenzy, result);
         }
 
         private List<int> RollDice(int amount)
