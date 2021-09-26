@@ -1,7 +1,7 @@
 <table>
 <tr>
 <td width="20%">
-    <img src="https://github.com/LariscusObscurus/V5_Discord_Bot/raw/master/Images/darkpack_black_logo.png">
+    <img src="https://github.com/e455a81e-d3ba-41a2-bc6d-7aafb1d9a5cd/V5_Discord_Bot/raw/master/Images/darkpack_black_logo.png">
 </td>
 <td>
 <h1>Vampire: The Masquerade Discord Dice Roller Bot</h1>
